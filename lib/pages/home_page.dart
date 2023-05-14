@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tf07p_0019_codigo_whatsapp_clone/pages/chat_page.dart';
 
 class HomPage extends StatefulWidget {
   @override
@@ -79,7 +80,7 @@ class _HomPageState extends State<HomPage> with SingleTickerProviderStateMixin {
         controller: _tabController,
         children: [
           Center(child: Text("Camera")),
-          Center(child: Text("Chats")),
+          Center(child: ChatPage()),
           Center(child: Text("Status")),
           Center(child: Text("Calls")),
         ],
