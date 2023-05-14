@@ -22,28 +22,68 @@ class _HomPageState extends State<HomPage> with SingleTickerProviderStateMixin {
   Widget build(BuildContext context) {
     print("build");
     return Scaffold(
-        appBar: AppBar(
-          title: Text("WhatsApp"),
-          actions: [
-            IconButton(
-              onPressed: () {},
-              icon: Icon(Icons.search),
+      appBar: AppBar(
+        title: Text("WhatsApp"),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.search),
+          ),
+          IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.more_vert),
+          ),
+        ],
+        bottom: TabBar(
+          controller: _tabController,
+          indicatorColor: Colors.white,
+          indicatorWeight: 3.5,
+          tabs: [
+            Tab(
+              icon: Icon(Icons.camera_alt),
             ),
-            IconButton(
-              onPressed: () {},
-              icon: Icon(Icons.more_vert),
+            Tab(
+              child: Text(
+                "CHATS",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            Tab(
+              child: Text(
+                "STATUS",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            Tab(
+              child: Text(
+                "CALLS",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ),
           ],
-          bottom: TabBar(
-            controller: _tabController,
-            tabs: [],
-          ),
         ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {},
-          child: const Icon(
-            Icons.message,
-          ),
-        ));
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: const Icon(
+          Icons.message,
+        ),
+      ),
+      body: TabBarView(
+        controller: _tabController,
+        children: [
+          Center(child: Text("Camera")),
+          Center(child: Text("Chats")),
+          Center(child: Text("Status")),
+          Center(child: Text("Calls")),
+        ],
+      ),
+    );
   }
 }
