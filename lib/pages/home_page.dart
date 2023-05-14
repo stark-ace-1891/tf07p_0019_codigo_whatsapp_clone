@@ -1,14 +1,27 @@
 import 'package:flutter/material.dart';
 
 class HomPage extends StatelessWidget {
-  const HomPage({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Prueba"),
-      ),
-    );
+        appBar: AppBar(
+          title: Text("Whatsapp"),
+          actions: [
+            IconButton(
+              onPressed: () {},
+              icon: Icon(Icons.search),
+            ),
+            IconButton(
+              onPressed: () {},
+              icon: Icon(Icons.more_vert),
+            ),
+          ],
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {},
+          child: const Icon(
+            Icons.message,
+          ),
+        ));
   }
 }
