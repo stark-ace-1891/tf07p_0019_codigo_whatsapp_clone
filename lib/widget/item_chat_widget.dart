@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tf07p_0019_codigo_whatsapp_clone/models/chat_model.dart';
+import 'package:tf07p_0019_codigo_whatsapp_clone/pages/chat_detail_page.dart';
 
 class ItemChatWidget extends StatelessWidget {
   // String avatarUrl;
@@ -71,6 +72,14 @@ class ItemChatWidget extends StatelessWidget {
               SizedBox(),
           ],
         ),
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => ChatDetailPage(),
+            ),
+          );
+        },
       ),
     );
   }
