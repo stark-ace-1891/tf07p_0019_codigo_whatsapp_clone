@@ -55,39 +55,92 @@ class ChatDetailPage extends StatelessWidget {
           ),
         ],
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              width: 300,
-              height: 300,
-              color: Colors.blue,
-              child: Stack(
-                clipBehavior: Clip.none,
-                children: [
-                  Align(
-                    alignment: Alignment.center,
-                    child: Container(
-                      width: 70,
-                      height: 70,
-                      color: Colors.red,
+      body: Stack(
+        children: [
+          //Fondo
+          Container(
+            color: Colors.black.withOpacity(0.09),
+          ),
+          //Listado de imagenes
+
+          //Input del nuevo mensaje
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Container(
+                margin: EdgeInsets.symmetric(
+                  horizontal: 10,
+                  vertical: 8,
+                ),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: TextField(
+                        decoration: InputDecoration(
+                          hintText: "Type message",
+                          hintStyle: TextStyle(
+                            fontSize: 16,
+                            color: Colors.black38,
+                          ),
+                          filled: true,
+                          fillColor: Colors.white,
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(30),
+                            borderSide: BorderSide.none,
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(30),
+                            borderSide: BorderSide.none,
+                          ),
+                          prefixIcon: Icon(
+                            Icons.sentiment_satisfied_alt,
+                            size: 30,
+                            color: Colors.black45,
+                          ),
+                          suffixIcon: Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Icon(
+                                Icons.attach_file,
+                                size: 30,
+                                color: Colors.black45,
+                              ),
+                              Icon(
+                                Icons.camera_alt,
+                                size: 30,
+                                color: Colors.black45,
+                              ),
+                              SizedBox(
+                                width: 6,
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
                     ),
-                  ),
-                  Positioned(
-                    bottom: -20,
-                    right: -20,
-                    child: Container(
-                      width: 40,
-                      height: 40,
-                      color: Colors.deepPurpleAccent,
+                    SizedBox(
+                      width: 7,
                     ),
-                  )
-                ],
-              ),
-            ),
-          ],
-        ),
+                    GestureDetector(
+                      onTap: () {
+                        print("Hola");
+                      },
+                      child: Container(
+                        padding: EdgeInsets.all(15),
+                        decoration: BoxDecoration(
+                          color: Color(0xff008878),
+                          shape: BoxShape.circle,
+                        ),
+                        child: Icon(
+                          Icons.send,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ],
+                )),
+          )
+        ],
       ),
     );
   }
