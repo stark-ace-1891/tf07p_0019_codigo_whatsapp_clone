@@ -57,20 +57,21 @@ class ChatDetailPage extends StatelessWidget {
       ),
       body: Stack(
         children: [
-          Container(
-            width: 300,
-            height: 300,
-            color: Colors.red,
+          Align(
+            alignment: Alignment.topCenter,
+            child: Container(
+              width: 300,
+              height: 300,
+              color: Colors.red,
+            ),
           ),
-          Container(
-            width: 200,
-            height: 200,
-            color: Colors.blue,
-          ),
-          Container(
-            width: 100,
-            height: 100,
-            color: Colors.yellow,
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Container(
+              width: 50,
+              height: 50,
+              color: Colors.yellow,
+            ),
           ),
         ],
       ),
