@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tf07p_0019_codigo_whatsapp_clone/data/data_dummy.dart';
 
 class ChatDetailPage extends StatelessWidget {
   const ChatDetailPage({super.key});

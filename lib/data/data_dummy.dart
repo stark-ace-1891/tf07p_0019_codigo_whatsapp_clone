@@ -1,3 +1,4 @@
+import 'package:tf07p_0019_codigo_whatsapp_clone/models/chat_message_model.dart';
 import 'package:tf07p_0019_codigo_whatsapp_clone/models/chat_model.dart';
 
 List<ChatModel> chats = [
@@ -54,5 +55,48 @@ List<ChatModel> chats = [
     time: "12:40",
     countMessage: 3,
     isTyping: true,
+  ),
+];
+
+List<ChatMessageModel> chatMessageList = [
+  ChatMessageModel(
+    messageContent: "Hola esta todo bien por ahi?",
+    messageType: "me",
+  ),
+  ChatMessageModel(
+    messageContent: "Si todo esta todo esta muy bien",
+    messageType: "other",
+  ),
+  ChatMessageModel(
+    messageContent: "Hola esta todo bien por ahi?",
+    messageType: "me",
+  ),
+  ChatMessageModel(
+    messageContent: "Si todo esta todo esta muy bien",
+    messageType: "other",
+  ),
+  ChatMessageModel(
+    messageContent: "Hola esta todo bien por ahi?",
+    messageType: "me",
+  ),
+  ChatMessageModel(
+    messageContent: "Si todo esta todo esta muy bien",
+    messageType: "other",
+  ),
+  ChatMessageModel(
+    messageContent: "Hola esta todo bien por ahi?",
+    messageType: "me",
+  ),
+  ChatMessageModel(
+    messageContent: "Si todo esta todo esta muy bien",
+    messageType: "other",
+  ),
+  ChatMessageModel(
+    messageContent: "Hola esta todo bien por ahi?",
+    messageType: "me",
+  ),
+  ChatMessageModel(
+    messageContent: "Si todo esta todo esta muy bien",
+    messageType: "other",
   ),
 ];
