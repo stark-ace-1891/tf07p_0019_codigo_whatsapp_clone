@@ -1,8 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:tf07p_0019_codigo_whatsapp_clone/data/data_dummy.dart';
+import 'package:tf07p_0019_codigo_whatsapp_clone/models/chat_message_model.dart';
 
-class ChatDetailPage extends StatelessWidget {
+class ChatDetailPage extends StatefulWidget {
   const ChatDetailPage({super.key});
+
+  @override
+  State<ChatDetailPage> createState() => _ChatDetailPageState();
+}
+
+class _ChatDetailPageState extends State<ChatDetailPage> {
+  final TextEditingController _myControllerMessage = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +75,9 @@ class ChatDetailPage extends StatelessWidget {
             itemCount: chatMessageList.length,
             itemBuilder: (BuildContext context, int index) {
               return Align(
-                alignment: chatMessageList[index].messageType == 'me' ? Alignment.topRight : Alignment.topLeft,
+                alignment: chatMessageList[index].messageType == 'me'
+                    ? Alignment.topRight
+                    : Alignment.topLeft,
                 child: Container(
                   padding: EdgeInsets.symmetric(
                     horizontal: 10,
@@ -78,12 +88,18 @@ class ChatDetailPage extends StatelessWidget {
                     vertical: 6,
                   ),
                   decoration: BoxDecoration(
-                    color: chatMessageList[index].messageType == 'me' ? Color(0xffe3ffc4) : Colors.white,
+                    color: chatMessageList[index].messageType == 'me'
+                        ? Color(0xffe3ffc4)
+                        : Colors.white,
                     borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(14),
                       bottomRight: Radius.circular(14),
-                      topRight: chatMessageList[index].messageType == 'me' ? Radius.circular(0) : Radius.circular(14),
-                      topLeft: chatMessageList[index].messageType == 'me' ?Radius.circular(14) : Radius.circular(0),
+                      topRight: chatMessageList[index].messageType == 'me'
+                          ? Radius.circular(0)
+                          : Radius.circular(14),
+                      topLeft: chatMessageList[index].messageType == 'me'
+                          ? Radius.circular(14)
+                          : Radius.circular(0),
                     ),
                     boxShadow: [
                       BoxShadow(
@@ -113,6 +129,7 @@ class ChatDetailPage extends StatelessWidget {
                   children: [
                     Expanded(
                       child: TextField(
+                        controller: _myControllerMessage,
                         decoration: InputDecoration(
                           hintText: "Type message",
                           hintStyle: TextStyle(
@@ -161,7 +178,14 @@ class ChatDetailPage extends StatelessWidget {
                     ),
                     GestureDetector(
                       onTap: () {
-                        print("Hola");
+                        setState(() {
+                          chatMessageList.add(ChatMessageModel(
+                            messageContent: _myControllerMessage.text,
+                            messageType: "me",
+                          ));
+                          _myControllerMessage.clear();
+                          FocusScope.of(context).unfocus();
+                        });
                       },
                       child: Container(
                         padding: EdgeInsets.all(15),
