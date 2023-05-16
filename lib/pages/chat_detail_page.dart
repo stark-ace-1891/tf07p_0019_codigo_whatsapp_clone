@@ -63,11 +63,11 @@ class ChatDetailPage extends StatelessWidget {
             color: Colors.black.withOpacity(0.09),
           ),
           //Listado de imagenes
-
-          ListView(
-            children: [
-              Align(
-                alignment: Alignment.topLeft,
+          ListView.builder(
+            itemCount: chatMessageList.length,
+            itemBuilder: (BuildContext context, int index) {
+              return Align(
+                alignment: chatMessageList[index].messageType == 'me' ? Alignment.topRight : Alignment.topLeft,
                 child: Container(
                   padding: EdgeInsets.symmetric(
                     horizontal: 10,
@@ -78,12 +78,12 @@ class ChatDetailPage extends StatelessWidget {
                     vertical: 6,
                   ),
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: chatMessageList[index].messageType == 'me' ? Color(0xffe3ffc4) : Colors.white,
                     borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(14),
                       bottomRight: Radius.circular(14),
-                      topRight: Radius.circular(14),
-                      topLeft: Radius.circular(0),
+                      topRight: chatMessageList[index].messageType == 'me' ? Radius.circular(0) : Radius.circular(14),
+                      topLeft: chatMessageList[index].messageType == 'me' ?Radius.circular(14) : Radius.circular(0),
                     ),
                     boxShadow: [
                       BoxShadow(
@@ -94,171 +94,11 @@ class ChatDetailPage extends StatelessWidget {
                     ],
                   ),
                   child: Text(
-                    "Hola estas bien?",
+                    chatMessageList[index].messageContent,
                   ),
                 ),
-              ),
-              Align(
-                alignment: Alignment.topRight,
-                child: Container(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 10,
-                    vertical: 6,
-                  ),
-                  margin: EdgeInsets.symmetric(
-                    horizontal: 12,
-                    vertical: 6,
-                  ),
-                  decoration: BoxDecoration(
-                    color: Color(0xffe3ffc4),
-                    borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(14),
-                      bottomRight: Radius.circular(14),
-                      topRight: Radius.circular(0),
-                      topLeft: Radius.circular(14),
-                    ),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.04),
-                        offset: Offset(4, 4),
-                        blurRadius: 10,
-                      )
-                    ],
-                  ),
-                  child: Text(
-                    "Gracias estoy muy bien",
-                  ),
-                ),
-              ),
-              Align(
-                alignment: Alignment.topLeft,
-                child: Container(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 10,
-                    vertical: 6,
-                  ),
-                  margin: EdgeInsets.symmetric(
-                    horizontal: 12,
-                    vertical: 6,
-                  ),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(14),
-                      bottomRight: Radius.circular(14),
-                      topRight: Radius.circular(14),
-                      topLeft: Radius.circular(0),
-                    ),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.04),
-                        offset: Offset(4, 4),
-                        blurRadius: 10,
-                      )
-                    ],
-                  ),
-                  child: Text(
-                    "Hola estas bien?",
-                  ),
-                ),
-              ),
-              Align(
-                alignment: Alignment.topRight,
-                child: Container(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 10,
-                    vertical: 6,
-                  ),
-                  margin: EdgeInsets.symmetric(
-                    horizontal: 12,
-                    vertical: 6,
-                  ),
-                  decoration: BoxDecoration(
-                    color: Color(0xffe3ffc4),
-                    borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(14),
-                      bottomRight: Radius.circular(14),
-                      topRight: Radius.circular(0),
-                      topLeft: Radius.circular(14),
-                    ),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.04),
-                        offset: Offset(4, 4),
-                        blurRadius: 10,
-                      )
-                    ],
-                  ),
-                  child: Text(
-                    "Gracias estoy muy bien",
-                  ),
-                ),
-              ),
-              Align(
-                alignment: Alignment.topLeft,
-                child: Container(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 10,
-                    vertical: 6,
-                  ),
-                  margin: EdgeInsets.symmetric(
-                    horizontal: 12,
-                    vertical: 6,
-                  ),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(14),
-                      bottomRight: Radius.circular(14),
-                      topRight: Radius.circular(14),
-                      topLeft: Radius.circular(0),
-                    ),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.04),
-                        offset: Offset(4, 4),
-                        blurRadius: 10,
-                      )
-                    ],
-                  ),
-                  child: Text(
-                    "Hola estas bien?",
-                  ),
-                ),
-              ),
-              Align(
-                alignment: Alignment.topRight,
-                child: Container(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 10,
-                    vertical: 6,
-                  ),
-                  margin: EdgeInsets.symmetric(
-                    horizontal: 12,
-                    vertical: 6,
-                  ),
-                  decoration: BoxDecoration(
-                    color: Color(0xffe3ffc4),
-                    borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(14),
-                      bottomRight: Radius.circular(14),
-                      topRight: Radius.circular(0),
-                      topLeft: Radius.circular(14),
-                    ),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.04),
-                        offset: Offset(4, 4),
-                        blurRadius: 10,
-                      )
-                    ],
-                  ),
-                  child: Text(
-                    "Gracias estoy muy bien",
-                  ),
-                ),
-              ),
-            ],
+              );
+            },
           ),
 
           //Input del nuevo mensaje
