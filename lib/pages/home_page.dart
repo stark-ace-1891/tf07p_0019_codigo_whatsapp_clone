@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tf07p_0019_codigo_whatsapp_clone/pages/call_page.dart';
 import 'package:tf07p_0019_codigo_whatsapp_clone/pages/chat_page.dart';
 
 class HomPage extends StatefulWidget {
@@ -82,7 +83,7 @@ class _HomPageState extends State<HomPage> with SingleTickerProviderStateMixin {
           Center(child: Text("Camera")),
           Center(child: ChatPage()),
           Center(child: Text("Status")),
-          Center(child: Text("Calls")),
+          CallPage(),
         ],
       ),
     );
