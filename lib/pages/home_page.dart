@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tf07p_0019_codigo_whatsapp_clone/pages/call_page.dart';
 import 'package:tf07p_0019_codigo_whatsapp_clone/pages/chat_page.dart';
+import 'package:tf07p_0019_codigo_whatsapp_clone/pages/status_page.dart';
 
 class HomPage extends StatefulWidget {
   @override
@@ -10,6 +11,11 @@ class HomPage extends StatefulWidget {
 class _HomPageState extends State<HomPage> with SingleTickerProviderStateMixin {
   TabController? _tabController;
 
+  _handleTabChange() {
+    print(_tabController!.index);
+    setState(() {});
+  }
+
   @override
   void initState() {
     // TODO: implement initState
@@ -18,6 +24,7 @@ class _HomPageState extends State<HomPage> with SingleTickerProviderStateMixin {
       length: 4,
       vsync: this,
     );
+    _tabController!.addListener(_handleTabChange);
   }
 
   @override
@@ -71,21 +78,82 @@ class _HomPageState extends State<HomPage> with SingleTickerProviderStateMixin {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        child: const Icon(
-          Icons.message,
-        ),
-      ),
+      floatingActionButton: _getFloating(),
       body: TabBarView(
         controller: _tabController,
         children: [
           Center(child: Text("Camera")),
           Center(child: ChatPage()),
-          Center(child: Text("Status")),
+          StatusPage(),
           CallPage(),
         ],
       ),
     );
+  }
+
+  Widget _getFloating() {
+    print(this._tabController!.index);
+    switch (_tabController!.index) {
+      case 0:
+        return FloatingActionButton(
+          onPressed: () {},
+          child: const Icon(
+            Icons.photo_camera,
+          ),
+        );
+      case 1:
+        return FloatingActionButton(
+          onPressed: () {},
+          child: const Icon(
+            Icons.message,
+          ),
+        );
+      case 2:
+        return Column(mainAxisAlignment: MainAxisAlignment.end, children: [
+          FloatingActionButton(
+            onPressed: () {},
+            child: const Icon(
+              Icons.edit,
+            ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          FloatingActionButton(
+            onPressed: () {},
+            child: const Icon(
+              Icons.photo_camera,
+            ),
+          ),
+        ]);
+      case 3:
+        return FloatingActionButton(
+          onPressed: () {},
+          child: const Icon(
+            Icons.call,
+          ),
+        );
+      default:
+        return FloatingActionButton(
+          onPressed: () {},
+          child: const Icon(
+            Icons.message,
+          ),
+        );
+    }
+
+    // return _tabController!.index == 0
+    //     ? FloatingActionButton(
+    //         onPressed: () {},
+    //         child: const Icon(
+    //           Icons.camera_alt,
+    //         ),
+    //       )
+    //     : FloatingActionButton(
+    //         onPressed: () {},
+    //         child: const Icon(
+    //           Icons.message,
+    //         ),
+    //       );
   }
 }
